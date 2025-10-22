@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MineVerse RP | Serveur exclusif par Twent, Esthe, Demoneau & Soneyru</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            scroll-behavior: smooth;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, rgba(16, 24, 39, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%), 
+                        url('https://images.unsplash.com/photo-1607513746994-51f730a44832?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+        }
+        
+        .block-reveal {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .block-reveal::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1e40af;
+            transform: translateX(-100%);
+            animation: reveal 1.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+        }
+        
+        @keyframes reveal {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(0); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .minecraft-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .minecraft-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .minecraft-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .minecraft-btn:hover::before {
+            left: 100%;
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .animate-delay-1 { animation-delay: 0.2s; }
+        .animate-delay-2 { animation-delay: 0.4s; }
+        .animate-delay-3 { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-gray-900/80 backdrop-blur-md z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <img class="h-10 w-10" src="https://i.imgur.com/JQ9w5bK.png" alt="Logo MineVerse">
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#home" class="text-blue-400 hover:text-blue-300 px-3 py-2 rounded-md text-sm font-medium transition">Accueil</a>
+                            <a href="#about" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Le Serveur</a>
+                            <a href="#creators" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Créateurs</a>
+                            <a href="#features" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Features</a>
+                            <a href="#join" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition">Nous Rejoindre</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-4 flex items-center md:ml-6">
+                        <button class="minecraft-btn bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium">
+                            <i class="fas fa-door-open mr-2"></i> Rejoindre maintenant
+                        </button>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="text-blue-400 block px-3 py-2 rounded-md text-base font-medium">Accueil</a>
+                <a href="#about" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Le Serveur</a>
+                <a href="#creators" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Créateurs</a>
+                <a href="#features" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Features</a>
+                <a href="#join" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Nous Rejoindre</a>
+                <button class="minecraft-btn bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium w-full mt-2">
+                    <i class="fas fa-door-open mr-2"></i> Rejoindre maintenant
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+            <div class="block-reveal">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">Bienvenue sur <span class="text-blue-400">MineVerse RP</span></h1>
+            </div>
+            <p class="text-xl md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto">Un serveur Minecraft Roleplay unique créé par Twent, Esthe, Demoneau et Soneyru. Plongez dans une aventure immersive comme jamais auparavant.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="minecraft-btn bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-bold transition">
+                    <i class="fas fa-play mr-2"></i> Découvrir
+                </button>
+                <button class="minecraft-btn bg-gray-700 hover:bg-gray-600 text-white px-8 py-4 rounded-lg text-lg font-bold transition">
+                    <i class="fas fa-users mr-2"></i> Communauté
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">À propos de <span class="text-blue-400">MineVerse RP</span></h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Un serveur Minecraft Roleplay hautement immersif avec une histoire riche, des systèmes uniques et une communauté soudée.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 rounded-xl p-8 card-hover">
+                    <div class="text-blue-400 text-4xl mb-4">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Histoire Captivante</h3>
+                    <p class="text-gray-300">Plongez dans un univers narratif riche avec des intrigues politiques, des mystères à résoudre et des personnages profonds.</p>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-8 card-hover">
+                    <div class="text-blue-400 text-4xl mb-4">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Systèmes Uniques</h3>
+                    <p class="text-gray-300">Des mécaniques de jeu customisées spécialement conçues pour améliorer l'expérience roleplay sans compromettre le gameplay.</p>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-8 card-hover">
+                    <div class="text-blue-400 text-4xl mb-4">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Communauté Engagée</h3>
+                    <p class="text-gray-300">Rejoignez une communauté bienveillante de joueurs passionnés par le roleplay et la création d'histoires collaboratives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creators Section -->
+    <section id="creators" class="py-20 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Les <span class="text-blue-400">Créateurs</span></h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Découvrez l'équipe talentueuse derrière MineVerse RP</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Twent -->
+                <div class="bg-gray-900 rounded-xl overflow-hidden card-hover">
+                    <div class="h-48 bg-blue-900 flex items-center justify-center">
+                        <img src="https://i.imgur.com/JQ9w5bK.png" alt="Twent" class="h-32 w-32 rounded-full border-4 border-blue-400 animate-float">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-1">Twent</h3>
+                        <p class="text-blue-400 mb-3">Fondateur & Développeur</p>
+                        <p class="text-gray-300">Expert en développement de plugins et création d'univers cohérents.</p>
+                        <div class="flex mt-4 space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-twitch"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Esthe -->
+                <div class="bg-gray-900 rounded-xl overflow-hidden card-hover">
+                    <div class="h-48 bg-purple-900 flex items-center justify-center">
+                        <img src="https://i.imgur.com/JQ9w5bK.png" alt="Esthe" class="h-32 w-32 rounded-full border-4 border-purple-400 animate-float animate-delay-1">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-1">Esthe</h3>
+                        <p class="text-purple-400 mb-3">Scénariste & Community Manager</p>
+                        <p class="text-gray-300">Maître des intrigues et de l'ambiance, elle donne vie à l'univers du serveur.</p>
+                        <div class="flex mt-4 space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-purple-400 transition"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-purple-400 transition"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Demoneau -->
+                <div class="bg-gray-900 rounded-xl overflow-hidden card-hover">
+                    <div class="h-48 bg-red-900 flex items-center justify-center">
+                        <img src="https://i.imgur.com/JQ9w5bK.png" alt="Demoneau" class="h-32 w-32 rounded-full border-4 border-red-400 animate-float animate-delay-2">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-1">Demoneau</h3>
+                        <p class="text-red-400 mb-3">Builder & Game Designer</p>
+                        <p class="text-gray-300">Artiste du paysage, il crée des décors époustouflants pour immerger les joueurs.</p>
+                        <div class="flex mt-4 space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-red-400 transition"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-red-400 transition"><i class="fab fa-artstation"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Soneyru -->
+                <div class="bg-gray-900 rounded-xl overflow-hidden card-hover">
+                    <div class="h-48 bg-green-900 flex items-center justify-center">
+                        <img src="https://i.imgur.com/JQ9w5bK.png" alt="Soneyru" class="h-32 w-32 rounded-full border-4 border-green-400 animate-float animate-delay-3">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-1">Soneyru</h3>
+                        <p class="text-green-400 mb-3">Modérateur & Animateur RP</p>
+                        <p class="text-gray-300">Garant de la qualité roleplay et de l'ambiance sur le serveur.</p>
+                        <div class="flex mt-4 space-x-3">
+                            <a href="#" class="text-gray-400 hover:text-green-400 transition"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-gray-400 hover:text-green-400
+</body>
+</html>
